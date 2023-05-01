@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Producto</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-        <!-- Fonts -->
+    <title>Producto</title>
+
+     <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
           <!-- Latest compiled and minified CSS -->
@@ -14,7 +16,7 @@
 
           <!-- jQuery library -->
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  
+
           <!-- Latest compiled JavaScript -->
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -28,35 +30,32 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
-    </head>
-    <body class="antialiased">
-        
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <h3>{{$producto['descripcion']}}</h3>
-            
-            <div class="mt-8 bg-white dark:bg-gray-200 overflow-hidden shadow sm:rounded-lg">
-                
-                <div class="grid grid-cols-1 md:grid-cols-2">
+</head>
 
-                    <div class="p-6">
+<body class="antialiased">
 
+    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+        <h3>{{ $producto['descripcion'] }}</h3>
+        <div class="mt-8 bg-white dark:bg-gray-200 overflow-hidden shadow sm:rounded-lg">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="p-6">
                     <table class="table">
                         <thead>
                             <th scope="col">Codigo</th>
                             <th scope="col">Descripcion</th>
                             <th scope="col">Pais</th>
                             <th scope="col">Precio</th>
-                            <th scope="col">Fabricante</th>       
-                        <tbody>                         
-                               
+                            <th scope="col">Fabricante</th>
+                        <tbody>
+
                             <tr>
-                                <td>{{$producto['codigoProducto']}}</td>
-                                <td>{{$producto['descripcion']}}</td>
-                                <td>{{$producto['pais']}}</td>
-                                <td>{{$producto['precio']}}</td>
-                                <td>{{$producto['fabricante']['descripcion']}}</td>
-      
-                            </tr>                 
+                                <td>{{ $producto['codigoProducto'] }}</td>
+                                <td>{{ $producto['descripcion'] }}</td>
+                                <td>{{ $producto['pais'] }}</td>
+                                <td>{{ $producto['precio'] }}</td>
+                                <td>{{ $producto['fabricante']['descripcion'] }}</td>
+
+                            </tr>
                         </tbody>
                     </table>
 
@@ -69,15 +68,15 @@
                             <th scope="col">Fecha de inicio de operacion</th>
                         </thead>
                         <tbody>
-                         
-                               
-                               <tr>
-                                <td>{{$producto['fabricante']['codigoFabricante']}}</td>
-                                <td>{{$producto['fabricante']['descripcion']}}</td>
-                                <td>{{$producto['fabricante']['fechaInicioOperacion']}}</td>    
-      
-                            </tr>     
-                
+
+
+                            <tr>
+                                <td>{{ $producto['fabricante']['codigoFabricante'] }}</td>
+                                <td>{{ $producto['fabricante']['descripcion'] }}</td>
+                                <td>{{ $producto['fabricante']['fechaInicioOperacion'] }}</td>
+
+                            </tr>
+
                         </tbody>
                     </table>
 
@@ -90,16 +89,15 @@
                             <th scope="col"></th>
                         </thead>
                         <tbody>
-                         
-                               @foreach ($producto['categorias'] as $categoria)
-                               <tr>
-                                <td>{{$categoria['codigoCategoria']}}</td>
-                                <td>{{$categoria['descripcion']}}</td>
-                        
-                            </tr>     
-                               
-                               @endforeach                          
-                            
+
+                            @foreach ($producto['categorias'] as $categoria)
+                                <tr>
+                                    <td>{{ $categoria['codigoCategoria'] }}</td>
+                                    <td>{{ $categoria['descripcion'] }}</td>
+
+                                </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
 
@@ -113,39 +111,25 @@
                             <th scope="col">Correo</th>
                         </thead>
                         <tbody>
-                         
-                            @foreach ($producto['clientes'] as $cliente)
 
-                            <tr>
-                                <td>{{$cliente['codigoCliente']}}</td>
-                                <td>{{$cliente['nombre']}}</td>  
-                                <td>{{$cliente['telefono']}}</td>
-                                <td>{{$cliente['correo']}}</td>
-      
-                            </tr>     
-                
-                                
-                            @endforeach   
+                            @foreach ($producto['clientes'] as $cliente)
+                                <tr>
+                                    <td>{{ $cliente['codigoCliente'] }}</td>
+                                    <td>{{ $cliente['nombre'] }}</td>
+                                    <td>{{ $cliente['telefono'] }}</td>
+                                    <td>{{ $cliente['correo'] }}</td>
+
+                                </tr>
+                            @endforeach
 
                         </tbody>
                     </table>
-
-
-                    <a href="{{route('producto.index')}}" class="btn btn-info">Regresar</a>
-                    </div>
-
+                    <a href="{{ route('producto.index') }}" class="btn btn-info">Regresar</a>
                 </div>
-
             </div>
-
-
-
-
         </div>
+    </div>
 
-       
-        
+</body>
 
-    </body>
- 
 </html>
